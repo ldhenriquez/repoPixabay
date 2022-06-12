@@ -91,6 +91,9 @@
           "options": {
             "no-cache": true
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy"
         }
       }
     }

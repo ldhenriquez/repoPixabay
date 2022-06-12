@@ -26,6 +26,7 @@
     "@ngrx/store": "^12.2.0",
     "@ngrx/store-devtools": "12.2",
     "@popperjs/core": "^2.11.5",
+    "angular-cli-ghpages": "^1.0.0",
     "boostrap": "^2.0.0",
     "bootstrap": "^4.5.3",
     "jquery": "^3.6.0",

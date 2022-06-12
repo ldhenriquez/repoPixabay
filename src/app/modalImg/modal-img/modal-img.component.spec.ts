@@ -1,13 +1,11 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 
 import { ModalImgComponent } from './modal-img.component';
 import { SendDataService } from '../../services/send-data.service';
-import { Store } from '@ngrx/store';
 import { StoreService } from 'src/app/store/store.service';
 
 describe('ModalImgComponent', () => {
   let component: ModalImgComponent;
-  let fixture: ComponentFixture<ModalImgComponent>;
   let sendData:any;
   let store:any;
 
@@ -43,9 +41,6 @@ describe('ModalImgComponent', () => {
       sendData,
       store
     )
-    /* fixture = TestBed.createComponent(ModalImgComponent);
-    component = fixture.componentInstance; */
-    /* fixture.detectChanges(); */
   });
 
   it('should create', () => {

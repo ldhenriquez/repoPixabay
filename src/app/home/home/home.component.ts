@@ -39,20 +39,17 @@ export class HomeComponent implements OnInit {
     this.pixay.getImages().subscribe(res => {
       this.allListImgs=res.hits;
       this.listImgs=res.hits;
-      console.log(res);
       }, error =>{
         console.log(error);
       })
   }
 
   filterDropdown(category:string){
-    console.log('filterDrp', category);
     if(category == 'NAN'){
       this.listImgs=this.allListImgs;
     }else{
       this.pixay.getDropdown(category).subscribe(res => {
         this.listImgs=res.hits;
-        console.log(res);
         }, error =>{
           console.log(error);
         })
@@ -62,10 +59,8 @@ export class HomeComponent implements OnInit {
 
   submitFilter(){
     let type = this.filterForm.controls.type.value;
-    console.log('type', type);
     this.pixay.getFilterType(type).subscribe(res => {
       this.listImgs=res.hits;
-      console.log(res);
       }, error =>{
         console.log(error);
       })

@@ -33,23 +33,6 @@
 
     </div>
     
-    <!-- <div class="lightbox">
-        <div class="multi-carousel">
-            <div class="multi-carousel-inner">
-                <div class="multi-carousel-item" *ngFor="let img of listImgs; index as i">
-                    <img class="imgsPixay"  [src]=[img.previewURL] 
-                    (click)="openModalImgs(img)">
-                </div>
-            </div>
-        </div>
-    </div> -->
-        
-    <!-- <div class="contentImgs row" *ngIf="listImgs">
-        <div class="col-lg-2" *ngFor="let img of listImgs; index as i">
-            <img class="imgsPixay"  [src]=[img.previewURL] 
-            (click)="openModalImgs(img)">
-        </div>
-    </div> -->
     <div class="contentImgs photos row" *ngIf="listImgs">
         <div class="col-sm-6 col-md-4 col-lg-3 item" *ngFor="let img of listImgs; index as i">
             <img class="imgsPixay"  [src]=[img.previewURL] 

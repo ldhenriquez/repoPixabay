@@ -9,5 +9,4 @@ module.exports = {
     "<rootDir>"
   ],
   
-  /* moduleFileExtensions: [...defaults.moduleFileExtensions, 'ts', 'tsx'], */
 };

@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 
 import { HomeComponent } from './home.component';
 import { PixabayService } from '../../services/pixabay.service';
@@ -7,7 +7,6 @@ import { of } from 'rxjs';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
-  let fixture: ComponentFixture<HomeComponent>;
   let pixay: any;
   let modalService: any;
   let sendData: any;
@@ -49,10 +48,6 @@ describe('HomeComponent', () => {
       modalService,
       sendData
     )
-
-    /* fixture = TestBed.createComponent(HomeComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges(); */
   });
 
   it('should create', () => {

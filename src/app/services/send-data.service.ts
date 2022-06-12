@@ -1,7 +1,6 @@
-import { EventEmitter, Injectable, Output } from '@angular/core';
-import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { Injectable } from '@angular/core';
+import { BsModalRef } from 'ngx-bootstrap/modal';
 import { Subject } from 'rxjs';
-import { ModalImgComponent } from '../modalImg/modal-img/modal-img.component';
 
 @Injectable({
   providedIn: 'root'

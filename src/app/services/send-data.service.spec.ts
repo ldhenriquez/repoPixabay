@@ -1,6 +1,4 @@
-import { componentFactoryName } from '@angular/compiler';
 import { TestBed } from '@angular/core/testing';
-import { BsModalService } from 'ngx-bootstrap/modal';
 import { SendDataService } from './send-data.service';
 
 describe('SendDataService', () => {
@@ -9,14 +7,6 @@ describe('SendDataService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      /* imports: [BsModalService], */
-      
-    /* providers: [
-        {
-          provide: BsModalService,
-          useValue: {}
-        }
-      ],  */
     });
     service = TestBed.inject(SendDataService);
   });

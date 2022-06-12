@@ -1,6 +1,6 @@
 import 'jest-preset-angular/setup-jest';
 import 'zone.js';
-/* import 'zone.js/testing';  */
+
 /* global mocks for jsdom */
 const mock = () => {
   let storage: { [key: string]: string } = {};

@@ -57,7 +57,9 @@
 /***************************************************************************************************
  * Zone JS is required by default for Angular itself.
  */
+/*  import 'jest-preset-angular/setup-jest'; */
 import 'zone.js';  // Included with Angular CLI.
+/* import 'zone.js/dist/zone-testing.js' */
 
 
 /***************************************************************************************************

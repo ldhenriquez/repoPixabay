@@ -5,6 +5,10 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { ModalImgComponent } from 'src/app/modalImg/modal-img/modal-img.component';
 import { SendDataService } from '../../services/send-data.service';
 
+/**
+ * Componente de home 
+ */
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -12,15 +16,21 @@ import { SendDataService } from '../../services/send-data.service';
 })
 export class HomeComponent implements OnInit {
   
-  
+  /**
+  * Variable donde se almacena el primer llamado de servicio
+  * almacena data de imagenes
+  */
   allListImgs: any[] = [];
+
+  /**
+  * Variable donde se almacena data de imagenes a mostrar
+  */
   listImgs: any[] = [];
-  contVista:any;
-  filterForm!: FormGroup;
 
-  modalRed!: BsModalRef;
-
-  
+  /**
+  * Formulario para busqueda
+  */
+  filterForm!: FormGroup; 
 
   constructor(private pixay: PixabayService, 
     private modalService: BsModalService, 
@@ -35,6 +45,9 @@ export class HomeComponent implements OnInit {
     this.obtenerImages();
   }
 
+  /**
+  * Consulta al servicio para obtener las imagenes predeterminadas
+  */
   obtenerImages(){
     this.pixay.getImages().subscribe(res => {
       this.allListImgs=res.hits;
@@ -44,6 +57,10 @@ export class HomeComponent implements OnInit {
       })
   }
 
+  /**
+  * Consulta servicio acorde a parametro ingresado para dropdown
+  * @param category:string
+  */
   filterDropdown(category:string){
     if(category == 'NAN'){
       this.listImgs=this.allListImgs;
@@ -57,6 +74,9 @@ export class HomeComponent implements OnInit {
     
   }
 
+  /**
+  * Consulta servicio acorde a parametro ingresado por la busqueda de teclado
+  */
   submitFilter(){
     let type = this.filterForm.controls.type.value;
     this.pixay.getFilterType(type).subscribe(res => {
@@ -67,6 +87,10 @@ export class HomeComponent implements OnInit {
     
   }
 
+  /**
+  * Despliega el modal y envia data de imagen
+  * @param data:any
+  */
   openModalImgs(data:any){
     data.views = data.views +1;
     this.sendData.setData(data);

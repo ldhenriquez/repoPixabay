@@ -2,6 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+/**
+  * Servicio de pixaybay
+  */
+
 @Injectable({
   providedIn: 'root'
 })
@@ -11,14 +15,25 @@ export class PixabayService {
 
   constructor(private http: HttpClient) { }
 
+  /**
+  * Servicio para obtener imagenes predeterminadas
+  */
   getImages(): Observable<any>{
     return this.http.get(this.url); 
   }
 
+  /**
+  * Servicio para obtener imagenes acorde a categoria seleccionada o ingresada
+  * @param category:any
+  */
   getDropdown(category:string): Observable<any>{
     return this.http.get(`${this.url}&category=${category}`); 
   }
 
+  /**
+  * Servicio para obtener imagenes al tipo ingresado por teclado
+  * @param type:any
+  */
   getFilterType(type:string): Observable<any>{
     return this.http.get(`${this.url}&lang=es&q=${type}`); 
   }

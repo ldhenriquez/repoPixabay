@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { setData } from './store.acciones';
+import { setData, getData } from './store.acciones';
+import { Observable } from 'rxjs';
+import { selectDataCollection } from './store.seleccion';
 
 /**
   * Servicio ngrx store
@@ -21,4 +23,10 @@ export class StoreService {
   sendDispatch(value: any) {
     this.store.dispatch(setData(value));
   }
+
+  getState$(): any {
+    let data: any = this.store.select(selectDataCollection);
+    return data.actionsObserver._value;
+  }
+
 }

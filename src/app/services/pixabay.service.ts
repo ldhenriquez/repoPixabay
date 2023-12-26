@@ -18,8 +18,8 @@ export class PixabayService {
   /**
   * Servicio para obtener imagenes predeterminadas
   */
-  getImages(): Observable<any>{
-    return this.http.get(this.url); 
+  getAllImages(): Observable<any>{
+    return this.http.get(this.url);
   }
 
   /**
@@ -27,7 +27,7 @@ export class PixabayService {
   * @param category:any
   */
   getDropdown(category:string): Observable<any>{
-    return this.http.get(`${this.url}&category=${category}`); 
+    return this.http.get(`${this.url}&category=${category}`);
   }
 
   /**
@@ -35,6 +35,6 @@ export class PixabayService {
   * @param type:any
   */
   getFilterType(type:string): Observable<any>{
-    return this.http.get(`${this.url}&lang=es&q=${type}`); 
+    return this.http.get(`${this.url}&lang=es&q=${type}`);
   }
 }

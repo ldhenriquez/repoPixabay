@@ -1,6 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { StoreService } from 'src/app/store/store.service';
-import { SendDataService } from '../../services/send-data.service';
+import { BsModalRef } from 'ngx-bootstrap/modal';
 
 
 /**
@@ -27,39 +27,22 @@ export class ModalImgComponent implements OnInit {
   */
   contVista:any;
 
-  constructor(private sendData: SendDataService,
-    private store:StoreService) { }
+  constructor(private store:StoreService) { }
 
   ngOnInit(): void {
     this.receiveData();
-    
   }
 
   /**
-  * Guardar con store
-  */
-  setStore(){
-    let dataStore = {
-      tags: this.dataModal.tags,
-      views: this.dataModal.views,
-      likes: this.dataModal.likes,
-      urlImg: this.dataModal.webformatURL
-    }
-
-    this.store.sendDispatch(dataStore);
-  }
-
-  /**
-  * Recibe data de home especifica de imagen clickeada para ser mostrada 
+  * Recibe data de home especifica de imagen clickeada para ser mostrada
   * Y ejecuta setStore
   */
   receiveData(){
 
-    this.dataModal = this.sendData.sendData();
-    this.setStore();
-    
-  }
+    this.dataModal = this.store.getState$();
 
+
+  }
 
 /**
   * Control de likes y estilos de boton
@@ -67,11 +50,18 @@ export class ModalImgComponent implements OnInit {
   clickLike(){
     this.active = !this.active
 
-      if(this.active){
-        this.dataModal.likes = this.dataModal.likes + 1;
-      } else{
-        this.dataModal.likes = this.dataModal.likes - 1;
+    let like = this.dataModal.likes;
+    like = this.active ? like + 1 : like - 1;
+
+      let dataStore = {
+        tags: this.dataModal.tags,
+        views: this.dataModal.views,
+        likes: like,
+        urlImg: this.dataModal.urlImg
       }
+
+      this.store.sendDispatch(dataStore);
+      this.receiveData();
   }
 
 }

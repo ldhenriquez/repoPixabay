@@ -25,7 +25,7 @@ describe('PixabayService', () => {
 
   it('getImages', () => {
     jest.spyOn(http, 'get').mockReturnValue(true);
-    service.getImages();
+    service.getAllImages();
   });
 
   it('getDropdown', () => {

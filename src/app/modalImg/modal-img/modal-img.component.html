@@ -5,25 +5,24 @@
         <div class="contentTags">
           <h3 class="text-secondary">{{dataModal.tags}}</h3>
         </div>
-        
-        <img class="img-fluid imgModal" [src]="dataModal.webformatURL" alt="">
-        
+
+        <img class="img-fluid imgModal" [src]="dataModal.urlImg" alt="">
+
       </div>
-      
+
     </div>
     <div class="contentBarra">
       <div class="barra">
-        <input [ngClass]="{ btnDisactive: !active }" class="buttonLike btn btn-primary" 
+        <input [ngClass]="{ btnDisactive: !active }" class="buttonLike btn btn-primary"
         type="submit" value="Me gusta {{dataModal.likes}}" (click)="clickLike()">
         <div class="contentViews">
           <h5 class="textView"> Vistas: {{dataModal.views}}</h5>
         </div>
-        
+
       </div>
-      
-  
+
+
     </div>
   </div>
 
 
- 

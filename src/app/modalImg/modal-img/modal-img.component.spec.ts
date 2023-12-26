@@ -1,7 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
 import { ModalImgComponent } from './modal-img.component';
-import { SendDataService } from '../../services/send-data.service';
 import { StoreService } from 'src/app/store/store.service';
 
 describe('ModalImgComponent', () => {
@@ -11,12 +10,8 @@ describe('ModalImgComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      
+
       providers: [
-        {
-          provide: SendDataService,
-          useValue: {}
-        },
         {
           provide: StoreService,
           useValue: {}
@@ -29,16 +24,12 @@ describe('ModalImgComponent', () => {
 
   beforeEach(() => {
 
-    sendData = {
-      sendData: jest.fn()
-    }
-
     store = {
-      sendDispatch: jest.fn()
+      sendDispatch: jest.fn(),
+      getState$: jest.fn()
     }
 
     component = new ModalImgComponent(
-      sendData,
       store
     )
   });
@@ -54,9 +45,7 @@ describe('ModalImgComponent', () => {
       likes: 34,
       urlImg: 'https://www.google.com/'
     }
-    jest.spyOn(sendData, 'sendData').mockReturnValue(true);
-    jest.spyOn(store, 'sendDispatch').mockReturnValue(true);
-    component.setStore();
+    jest.spyOn(store, 'getState$').mockReturnValue(true);
     component.receiveData();
     component.ngOnInit();
   });

@@ -16,26 +16,26 @@
                 <a (click)="filterDropdown('people')" class="dropdown-item">People</a>
                 <a (click)="filterDropdown('feelings')" class="dropdown-item">Feelings</a>
                 <a (click)="filterDropdown('computer')" class="dropdown-item">Computer</a>
-                <a (click)="filterDropdown('buildings')" class="dropdown-item">buildings</a>
-            </div>            
+                <a (click)="filterDropdown('buildings')" class="dropdown-item">Buildings</a>
+            </div>
         </div>
-    
+
         <div class="contentBottom">
             <form [formGroup] = "filterForm" (ngSubmit)="submitFilter()" class="filter">
                 <label class="form-label">Filtro</label>
                 <input type="text" class="inputSub form-control" placeholder="Búsqueda"
                 name="type"  formControlName="type" [maxLength]="100">
               </form>
-              
+
             <input class="btn btn-primary" type="submit" value="Buscar" (click)="submitFilter()">
         </div>
-        
+
 
     </div>
-    
+
     <div class="contentImgs photos row" *ngIf="listImgs">
         <div class="col-sm-6 col-md-4 col-lg-3 item" *ngFor="let img of listImgs; index as i">
-            <img class="imgsPixay"  [src]=[img.previewURL] 
+            <img class="imgsPixay"  [src]=[img.previewURL]
             (click)="openModalImgs(img)">
         </div>
     </div>

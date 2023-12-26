@@ -9,7 +9,7 @@ describe('HomeComponent', () => {
   let component: HomeComponent;
   let pixay: any;
   let modalService: any;
-  let sendData: any;
+  let store: any;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -30,7 +30,7 @@ describe('HomeComponent', () => {
 
   beforeEach(() => {
     pixay = {
-      getImages: jest.fn(),
+      getAllImages: jest.fn(),
       getDropdown: jest.fn(),
       getFilterType: jest.fn(),
     }
@@ -39,14 +39,14 @@ describe('HomeComponent', () => {
       show: jest.fn(),
     }
 
-    sendData = {
-      setData: jest.fn(),
+    store = {
+      sendDispatch: jest.fn()
     }
 
     component = new HomeComponent(
       pixay,
       modalService,
-      sendData
+      store
     )
   });
 
@@ -55,7 +55,7 @@ describe('HomeComponent', () => {
   });
 
   it('should create', () => {
-    jest.spyOn(pixay, 'getImages').mockReturnValue(of(true));
+    jest.spyOn(pixay, 'getAllImages').mockReturnValue(of(true));
     component.obtenerImages();
     component.ngOnInit();
   });
@@ -78,7 +78,6 @@ describe('HomeComponent', () => {
     let data = {
       views:12
     }
-    jest.spyOn(sendData, 'setData').mockReturnValue(of(true));
     jest.spyOn(modalService, 'show').mockReturnValue(of(true));
     component.openModalImgs(data);
   });

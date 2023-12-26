@@ -1,12 +1,12 @@
 import { Component, OnInit} from '@angular/core';
 import { PixabayService } from 'src/app/services/pixabay.service';
 import { FormGroup, FormControl, Validators} from '@angular/forms';
-import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalService } from 'ngx-bootstrap/modal';
 import { ModalImgComponent } from 'src/app/modalImg/modal-img/modal-img.component';
-import { SendDataService } from '../../services/send-data.service';
+import { StoreService } from 'src/app/store/store.service';
 
 /**
- * Componente de home 
+ * Componente de home
  */
 
 @Component({
@@ -15,7 +15,7 @@ import { SendDataService } from '../../services/send-data.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  
+
   /**
   * Variable donde se almacena el primer llamado de servicio
   * almacena data de imagenes
@@ -30,14 +30,14 @@ export class HomeComponent implements OnInit {
   /**
   * Formulario para busqueda
   */
-  filterForm!: FormGroup; 
+  filterForm!: FormGroup;
 
-  constructor(private pixay: PixabayService, 
-    private modalService: BsModalService, 
-    private sendData: SendDataService,
+  constructor(private pixay: PixabayService,
+    private modalService: BsModalService,
+    private store:StoreService,
     ) {
     this.filterForm = new FormGroup({
-      type: new FormControl('',[Validators.required,Validators.minLength(1), Validators.maxLength(100)]),  
+      type: new FormControl('',[Validators.required,Validators.minLength(1), Validators.maxLength(100)]),
     });
    }
 
@@ -49,7 +49,7 @@ export class HomeComponent implements OnInit {
   * Consulta al servicio para obtener las imagenes predeterminadas
   */
   obtenerImages(){
-    this.pixay.getImages().subscribe(res => {
+    this.pixay.getAllImages().subscribe(res => {
       this.allListImgs=res.hits;
       this.listImgs=res.hits;
       }, error =>{
@@ -71,7 +71,7 @@ export class HomeComponent implements OnInit {
           console.log(error);
         })
     }
-    
+
   }
 
   /**
@@ -84,7 +84,7 @@ export class HomeComponent implements OnInit {
       }, error =>{
         console.log(error);
       })
-    
+
   }
 
   /**
@@ -93,7 +93,15 @@ export class HomeComponent implements OnInit {
   */
   openModalImgs(data:any){
     data.views = data.views +1;
-    this.sendData.setData(data);
+
+    let dataStore = {
+      tags: data.tags,
+      views: data.views,
+      likes: data.likes,
+      urlImg: data.webformatURL
+    }
+
+    this.store.sendDispatch(dataStore);
     this.modalService.show(ModalImgComponent);
   }
 }

@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { setData, getData } from './store.acciones';
-import { Observable } from 'rxjs';
+import { setData } from './store.acciones';
 import { selectDataCollection } from './store.seleccion';
 
 /**

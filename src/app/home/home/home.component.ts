@@ -88,7 +88,7 @@ export class HomeComponent implements OnInit {
   }
 
   /**
-  * Despliega el modal y envia data de imagen
+  * Despliega el modal y envia data de imagen por redux
   * @param data:any
   */
   openModalImgs(data:any){

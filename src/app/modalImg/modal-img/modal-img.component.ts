@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { StoreService } from 'src/app/store/store.service';
-import { BsModalRef } from 'ngx-bootstrap/modal';
 
 
 /**
@@ -34,18 +33,17 @@ export class ModalImgComponent implements OnInit {
   }
 
   /**
-  * Recibe data de home especifica de imagen clickeada para ser mostrada
-  * Y ejecuta setStore
+  * Recibe data de redux sobre la imagen clickeada para ser mostrada
   */
   receiveData(){
 
     this.dataModal = this.store.getState$();
 
-
   }
 
 /**
   * Control de likes y estilos de boton
+  * Modificación de data redux
   */
   clickLike(){
     this.active = !this.active

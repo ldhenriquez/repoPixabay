@@ -27,6 +27,8 @@ export class HomeComponent implements OnInit {
   */
   listImgs: any[] = [];
 
+  nameCategory: string = 'Categorías';
+
   /**
   * Formulario para busqueda
   */
@@ -64,12 +66,14 @@ export class HomeComponent implements OnInit {
   filterDropdown(category:string){
     if(category == 'NAN'){
       this.listImgs=this.allListImgs;
+      this.nameCategory = 'General';
     }else{
       this.pixay.getDropdown(category).subscribe(res => {
         this.listImgs=res.hits;
         }, error =>{
           console.log(error);
         })
+        this.nameCategory = category[0].toUpperCase() + category.slice(1);
     }
 
   }
